@@ -1,27 +1,21 @@
-import { useEffect, useState } from 'react';
-
 import classNames from 'classnames/bind';
 import styles from './Header.module.scss';
 
-import TippyHeadLess from '@tippyjs/react/headless';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 
-import { IoCloseCircleOutline } from 'react-icons/io5';
-import { ImSpinner8 } from 'react-icons/im';
 import { GrLanguage } from 'react-icons/gr';
 import { FaCoins, FaKeyboard, FaRegQuestionCircle, FaUser } from 'react-icons/fa';
 import { HiOutlineDotsVertical } from 'react-icons/hi';
 
-import { Wrapper as PopperWrapper } from '../../../Popper/index';
 import images from '../../../../assets/images';
-import AccountItem from '../../../AccountItem';
 import Button from '../../../Button';
 import Menu from '../../../Popper/Menu';
 import { IoMdSettings } from 'react-icons/io';
 import { MdLogout } from 'react-icons/md';
-import { UploadIcon, InboxIcon, MessageIcon, SearchIcon } from '../../../Icons';
+import { UploadIcon, InboxIcon, MessageIcon } from '../../../Icons';
 import Image from '../../../Image/Index';
+import Search from '../Search';
 
 const cx = classNames.bind(styles);
 
@@ -57,14 +51,7 @@ const MENU_ITEMS = [
 ];
 
 function Header() {
-    const [searchResult, setSearchResult] = useState([]);
     const currentUser = true;
-
-    useEffect(() => {
-        setTimeout(() => {
-            setSearchResult([1, 2, 2]);
-        }, 2000);
-    }, []);
 
     // Handle logic
     const handleMenuChange = (menuItem) => {
@@ -105,35 +92,10 @@ function Header() {
                 <div className={cx('logo')}>
                     <img src={images.logo} alt="logo" />
                 </div>
+                {/* Search */}
 
-                <TippyHeadLess
-                    interactive
-                    visible={searchResult.length > 0}
-                    render={(attrs) => (
-                        <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                            <PopperWrapper>
-                                <h4 className={cx('search-title')}>Accounts</h4>
-                                <AccountItem />
-                                <AccountItem />
-                                <AccountItem />
-                                <AccountItem />
-                            </PopperWrapper>
-                        </div>
-                    )}
-                >
-                    <div className={cx('search')}>
-                        <input placeholder="Search accounts and videos" spellCheck={false} />
-                        <button className={cx('loading')}>
-                            <ImSpinner8 />
-                        </button>
-                        <button className={cx('clear')}>
-                            <IoCloseCircleOutline />
-                        </button>
-                        <button className={cx('search-btn')}>
-                            <SearchIcon />
-                        </button>
-                    </div>
-                </TippyHeadLess>
+                <Search />
+
                 <div className={cx('actions')}>
                     {currentUser ? (
                         <>
