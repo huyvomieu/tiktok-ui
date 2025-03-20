@@ -47,45 +47,47 @@ function Search() {
         setShowResult(false);
     }
     return (
-        <TippyHeadLess
-            interactive
-            visible={showResult && searchResult.length > 0}
-            render={(attrs) => (
-                <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                    <PopperWrapper>
-                        <h4 className={cx('search-title')}>Accounts</h4>
-                        {searchResult.map((result) => {
-                            return <AccountItem key={result.id} data={result} />;
-                        })}
-                    </PopperWrapper>
+        <div>
+            <TippyHeadLess
+                interactive
+                visible={showResult && searchResult.length > 0}
+                render={(attrs) => (
+                    <div className={cx('search-result')} tabIndex="-1" {...attrs}>
+                        <PopperWrapper>
+                            <h4 className={cx('search-title')}>Accounts</h4>
+                            {searchResult.map((result) => {
+                                return <AccountItem key={result.id} data={result} />;
+                            })}
+                        </PopperWrapper>
+                    </div>
+                )}
+                onClickOutside={handleHideResult}
+            >
+                <div className={cx('search')}>
+                    <input
+                        ref={inputRef}
+                        value={searchValue}
+                        placeholder="Search accounts and videos"
+                        spellCheck={false}
+                        onChange={(e) => setSeachValue(e.target.value.trimStart())}
+                        onFocus={() => setShowResult(true)}
+                    />
+                    {loading && (
+                        <button className={cx('loading')}>
+                            <ImSpinner8 />
+                        </button>
+                    )}
+                    {!!searchValue && !loading && (
+                        <button className={cx('clear')} onClick={handleClear}>
+                            <IoCloseCircleOutline />
+                        </button>
+                    )}
+                    <button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
+                        <SearchIcon />
+                    </button>
                 </div>
-            )}
-            onClickOutside={handleHideResult}
-        >
-            <div className={cx('search')}>
-                <input
-                    ref={inputRef}
-                    value={searchValue}
-                    placeholder="Search accounts and videos"
-                    spellCheck={false}
-                    onChange={(e) => setSeachValue(e.target.value.trimStart())}
-                    onFocus={() => setShowResult(true)}
-                />
-                {loading && (
-                    <button className={cx('loading')}>
-                        <ImSpinner8 />
-                    </button>
-                )}
-                {!!searchValue && !loading && (
-                    <button className={cx('clear')} onClick={handleClear}>
-                        <IoCloseCircleOutline />
-                    </button>
-                )}
-                <button className={cx('search-btn')}>
-                    <SearchIcon />
-                </button>
-            </div>
-        </TippyHeadLess>
+            </TippyHeadLess>
+        </div>
     );
 }
 

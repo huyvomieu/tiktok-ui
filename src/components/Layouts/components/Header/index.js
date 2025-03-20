@@ -1,21 +1,23 @@
 import classNames from 'classnames/bind';
 import styles from './Header.module.scss';
 
+import { Link } from 'react-router-dom';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 
 import { GrLanguage } from 'react-icons/gr';
 import { FaCoins, FaKeyboard, FaRegQuestionCircle, FaUser } from 'react-icons/fa';
 import { HiOutlineDotsVertical } from 'react-icons/hi';
+import { IoMdSettings } from 'react-icons/io';
+import { MdLogout } from 'react-icons/md';
+import { UploadIcon, InboxIcon, MessageIcon } from '../../../Icons';
 
 import images from '../../../../assets/images';
 import Button from '../../../Button';
 import Menu from '../../../Popper/Menu';
-import { IoMdSettings } from 'react-icons/io';
-import { MdLogout } from 'react-icons/md';
-import { UploadIcon, InboxIcon, MessageIcon } from '../../../Icons';
 import Image from '../../../Image/Index';
 import Search from '../Search';
+import routesConfig from '../../../../config/routesConfig';
 
 const cx = classNames.bind(styles);
 
@@ -89,9 +91,9 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <div className={cx('logo')}>
+                <Link to={routesConfig.Home} className={cx('logo')}>
                     <img src={images.logo} alt="logo" />
-                </div>
+                </Link>
                 {/* Search */}
 
                 <Search />
