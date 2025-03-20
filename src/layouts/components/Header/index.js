@@ -10,14 +10,14 @@ import { FaCoins, FaKeyboard, FaRegQuestionCircle, FaUser } from 'react-icons/fa
 import { HiOutlineDotsVertical } from 'react-icons/hi';
 import { IoMdSettings } from 'react-icons/io';
 import { MdLogout } from 'react-icons/md';
-import { UploadIcon, InboxIcon, MessageIcon } from '../../../Icons';
+import { UploadIcon, InboxIcon, MessageIcon } from '../../../components/Icons';
 
-import images from '../../../../assets/images';
-import Button from '../../../Button';
-import Menu from '../../../Popper/Menu';
-import Image from '../../../Image/Index';
+import images from '../../../assets/images';
+import Button from '../../../components/Button';
+import Menu from '../../../components/Popper/Menu';
+import Image from '../../../components/Image/Index';
 import Search from '../Search';
-import routesConfig from '../../../../config/routesConfig';
+import routesConfig from '../../../config/routesConfig';
 
 const cx = classNames.bind(styles);
 

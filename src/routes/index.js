@@ -2,17 +2,17 @@ import Home from '../pages/Home';
 import Following from '../pages/Following';
 import Profile from '../pages/Profile';
 
-import HeaderOnly from '../components/Layouts/HeaderOnly';
+import HeaderOnly from '../layouts/HeaderOnly';
 import Upload from '../pages/Upload';
 import Search from '../pages/Search';
-import routesConfig from '../config/routesConfig';
+import configs from '../config/routesConfig';
 
 export const publicRoutes = [
-    { path: routesConfig.Home, component: Home },
-    { path: routesConfig.Following, component: Following },
-    { path: routesConfig.Upload, component: Upload, layout: HeaderOnly },
-    { path: routesConfig.Search, component: Search, layout: null },
-    { path: routesConfig.Profile, component: Profile },
+    { path: configs.routes.Home, component: Home },
+    { path: configs.routes.Following, component: Following },
+    { path: configs.routes.Upload, component: Upload, layout: HeaderOnly },
+    { path: configs.routes.Search, component: Search, layout: null },
+    { path: configs.routes.Profile, component: Profile },
 ];
 
 export const privatecRoutes = [];

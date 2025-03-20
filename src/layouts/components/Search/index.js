@@ -5,12 +5,12 @@ import styles from './Search.module.scss';
 import TippyHeadLess from '@tippyjs/react/headless';
 import { IoCloseCircleOutline } from 'react-icons/io5';
 import { ImSpinner8 } from 'react-icons/im';
-import { SearchIcon } from '../../../Icons';
+import { SearchIcon } from '../../../components/Icons';
 
-import { Wrapper as PopperWrapper } from '../../../Popper/index';
-import AccountItem from '../../../AccountItem';
-import { useDebounce } from '../../../../hooks/';
-import * as searchServices from '.././../../../apiServices/searchServices';
+import { Wrapper as PopperWrapper } from '../../../components/Popper/index';
+import AccountItem from '../../../components/AccountItem';
+import { useDebounce } from '../../../hooks';
+import * as searchServices from '../../../services/searchService';
 
 const cx = classNames.bind(styles);
 
