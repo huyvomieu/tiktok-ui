@@ -10,6 +10,7 @@ import { SearchIcon } from '../../../Icons';
 import { Wrapper as PopperWrapper } from '../../../Popper/index';
 import AccountItem from '../../../AccountItem';
 import { useDebounce } from '../../../../hooks/';
+import * as searchServices from '.././../../../apiServices/searchServices';
 
 const cx = classNames.bind(styles);
 
@@ -26,18 +27,15 @@ function Search() {
             setSearchResult([]);
             return;
         }
-        setLoading(true);
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debounced)}&type=less`)
-            .then((res) => res.json())
-            .then((res) => {
-                setSearchResult(res.data);
-                setLoading(false);
-            })
-            .catch(() => {
-                {
-                    setLoading(false);
-                }
-            });
+        const fetchAPI = async () => {
+            setLoading(true);
+
+            const res = await searchServices.search(debounced);
+
+            setSearchResult(res);
+            setLoading(false);
+        };
+        fetchAPI();
     }, [debounced]);
 
     function handleClear() {
@@ -70,7 +68,7 @@ function Search() {
                     value={searchValue}
                     placeholder="Search accounts and videos"
                     spellCheck={false}
-                    onChange={(e) => setSeachValue(e.target.value)}
+                    onChange={(e) => setSeachValue(e.target.value.trimStart())}
                     onFocus={() => setShowResult(true)}
                 />
                 {loading && (
