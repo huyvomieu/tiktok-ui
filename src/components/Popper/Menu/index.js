@@ -1,11 +1,11 @@
-import classNames from 'classnames/bind';
-
-import styles from './Menu.module.scss';
+import { useState } from 'react';
 import Tippy from '@tippyjs/react/headless';
+import classNames from 'classnames/bind';
+import PropTypes from 'prop-types';
+import styles from './Menu.module.scss';
 import { Wrapper as PopperWrapper } from '../index';
 import MenuItem from './MenuItem';
 import Header from './Header';
-import { useState } from 'react';
 const cx = classNames.bind(styles);
 const defaultFn = () => {};
 
@@ -59,5 +59,12 @@ function Menu({ children, items = [], hideOnClick = false, onChange = defaultFn 
         </Tippy>
     );
 }
+
+Menu.propTypes = {
+    children: PropTypes.node,
+    items: PropTypes.array,
+    hideOnClick: PropTypes.bool,
+    onChange: PropTypes.func,
+};
 
 export default Menu;

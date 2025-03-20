@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import styles from './Menu.module.scss';
 import { FaAngleLeft } from 'react-icons/fa';
@@ -15,4 +16,8 @@ function Header({ title, onBack }) {
     );
 }
 
+Header.propTypes = {
+    title: PropTypes.string,
+    onBack: PropTypes.func,
+};
 export default Header;
